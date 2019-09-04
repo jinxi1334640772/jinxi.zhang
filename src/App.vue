@@ -1,35 +1,50 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">
-        Home
-      </router-link> |
-      <router-link to="/about">
-        About
-      </router-link>
+    <div id="app">
+        <div class="container">
+            <navcomponent></navcomponent>
+            <el-button type="primary" @click="displayThis">显示this</el-button>
+            <el-button type="primary" @click="changeRoute">跳转路由</el-button>
+            <el-row :gutter="10">
+                <el-col :span="4">
+                    <!-- <router-view name="aside"></router-view> -->
+                    <asidebar></asidebar>
+                    <!-- <div v-for="item in items" :key="item">
+                        {{ item }}
+                    </div> -->
+                </el-col>
+                <el-col :span="20">
+                    <router-view></router-view>
+                </el-col>
+            </el-row>
+        </div>
+
     </div>
-    <router-view />
-  </div>
 </template>
-
+<script>
+import navcomponent from './views/nav/navcomponent.vue'
+import asidebar from './views/nav/aside.vue'
+export default {
+    data() {
+        return {
+            items: 8
+        }
+    },
+    components: { navcomponent, asidebar },
+    methods: {
+        displayThis() {
+            console.log(this, 'tihs');
+        },
+        changeRoute() {
+            // this.$router.push({path:'/menu'})
+            // this.$router.push('/menu')
+            // this.$router.push({name:'menu'})
+            this.$router.push({ name: 'menu' })
+        }
+    }
+}
+</script>
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.nav a {
+    padding: 5px;
 }
 </style>
