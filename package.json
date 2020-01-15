@@ -36,10 +36,7 @@
             "node": true
         },
         "rules": {
-            "indent": [
-                "error",
-                4
-            ],
+            "indent": [1,4],
             "semi": 0
         },
         "extends": [
