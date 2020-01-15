@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 10px;
+}
+.container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 800px;
+    width: 800px;
+    background: red;
+    overflow: auto;
+    margin: 20px;
+    padding: 10px;
+    border: 10px solid pink;
+}
+.main {
+    width: 1000px;
+    height: 1200px;
+    background: yellow;
+    overflow: auto;
+    padding: 10px;
+    border: 10px solid blue;
+    margin: 20px;
+}
+/* .in {
+    width: 600px;
+    height: 600px;
+    background: blue;
+    
+    对于含滚动条的父元素来说
+    clientWidth = border内的宽度 - 滚动条的宽度
+    clientHeight = border内的高度 - 滚动条的宽度
+    clientTop = border-top的宽度
+    clientLeft = border-left的宽度
+
+    offsetWidth = border内的宽度（包含border左右的宽度）
+    offsetHeight = border内的高度（包含border上下的宽度）
+    offsetTop = 距离offsetParentpadding的距离
+    offsetLeft = 距离offsetParent的距离
+
+    scrollWidth = 滚动区域的宽度（padding-left+子元素的offsetWidth+子元素的margin-left）= clientWidth + scrollLeft（最大）
+    scrollHeight = 滚动区域的高度（上下padding+子元素的offsetHeight+子元素的上下margin）= clientHeight + scrollHeight（最大）
+    scrollTop = 垂直滚动的距离
+    scrollLeft = 水平滚动的距离
+
+    screen。height  1080
+    screen。width  1920
+    screen。availHeight 1080
+    screen。availWidth 1858 (去除滚动条）
+    screen。availLeft 0
+    screen。availTop 0
+
+
+} */
