@@ -10,11 +10,7 @@
             </el-button>
             <el-row :gutter="10">
                 <el-col :span="4">
-                    <!-- <router-view name="aside"></router-view> -->
                     <asidebar />
-                    <!-- <div v-for="item in items" :key="item">
-                        {{ item }}
-                    </div> -->
                 </el-col>
                 <el-col :span="20">
                     <router-view />
@@ -24,26 +20,34 @@
     </div>
 </template>
 <script>
-import navcomponent from "./views/nav/navcomponent.vue";
-import asidebar from "./views/nav/aside.vue";
+import navcomponent from './views/nav/navcomponent.vue';
+import asidebar from './views/nav/aside.vue';
+import { getUser } from './utils/axios/jsonplaceholderApi.js';
+import { edsSearchList } from './utils/axios/edsApi.js';
 export default {
+    components: { navcomponent, asidebar },
     data() {
         return {
-            items: 8
+            items: 8,
         };
     },
-    components: { navcomponent, asidebar },
     methods: {
         displayThis() {
-            console.log(this, "tihs");
+            // console.log(this, 'tihs');
+            getUser({}).then(data => {
+                console.log(data, 1111);
+            });
+            edsSearchList({ searchIdArr: [1602, 20011] }).then(data => {
+                console.log(data, 2222);
+            });
         },
         changeRoute() {
             // this.$router.push({path:'/menu'})
             // this.$router.push('/menu')
             // this.$router.push({name:'menu'})
-            this.$router.push({ name: "menu" });
-        }
-    }
+            this.$router.push({ name: 'menu' });
+        },
+    },
 };
 </script>
 <style>

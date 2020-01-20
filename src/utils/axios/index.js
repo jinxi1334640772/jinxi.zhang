@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 // const axiosInstance = axios.create({
 //     // `url` 是用于请求的服务器 URL
 //     url: '/user',
@@ -156,21 +156,102 @@ import axios from 'axios'
 // axios.get('/comments').then(data => {
 //     console.log(data, 'hahhha');
 // })
-axios.defaults.baseURL = 'http://t-ssm.gaodun.com';
+// axios.defaults.baseURL = 'http://t-ssm.gaodun.com';
 // axios.defaults.headers.common['Authorization']='ANTH_TOKEN';
 // axios.defaults.headers.get['Content-Type']='application/x-www-form-urlencoded';
-
-axios.interceptors.request.use((config)=>{
-    console.log(config,'11111111');
-    return config;
-},(error)=>{
-    console.log(error,'333333333');
-    return Promise.reject(error);
-})
-
-axios.get('/api/Dictionary/SearchList?access_token=manager_6353_VHJLREpmc2x6b1N5RFJRemlQd1RKdlFkZ3Bwdk13dUc%3D&searchIdArr[]=1602&searchIdArr[]=20011').then(data => {
-    console.log(data, '222222222222');
-})
+import qs from 'qs';
+import state from '../../store/state';
+axios.interceptors.request.use(
+    config => {
+        console.log(config, '11111111');
+        return config;
+    },
+    error => {
+        console.log(error, '333333333');
+        return Promise.reject(error);
+    },
+);
+let defaultData = { access_token: state.access_token };
+export default {
+    postFormData(url, data) {
+        return axios({
+            method: 'post',
+            url: url,
+            baseURL: window.edsBaseURL,
+            data: qs.stringify(Object.assign(data, defaultData)),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+    postJsonData(url, data) {
+        return axios({
+            method: 'post',
+            baseURL: window.edsBaseURL,
+            url,
+            data: qs.stringify(Object.assign(data, defaultData)),
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+    getJsonData(url, data) {
+        return axios({
+            method: 'get',
+            baseURL: window.edsBaseURL,
+            url,
+            params: Object.assign(data, defaultData),
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+    postFormDataJsonplaceholder(url, data) {
+        return axios({
+            method: 'post',
+            url: url,
+            baseURL: window.jsonplaceholderBaseURL,
+            data: qs.stringify(data),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+    postJsonDataJsonplaceholder(url, data) {
+        return axios({
+            method: 'post',
+            baseURL: window.jsonplaceholderBaseURL,
+            url,
+            data: qs.stringify(data),
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+    getJsonDataJsonplaceholder(url, data) {
+        return axios({
+            method: 'get',
+            baseURL: window.jsonplaceholderBaseURL,
+            url,
+            params: qs.stringify(data),
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            timeout: 20000,
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    },
+};
 /*
 
 /posts	100 posts

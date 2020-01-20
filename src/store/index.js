@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import Vuex from 'vuex'
-import state from './state'
-import getters from './getter'
-import mutations from './mutation'
-import actions from './action'
-import moduleA from './modules/moduleA'
+import Vuex from 'vuex';
+import state from './state';
+import getters from './getter';
+import mutations from './mutation';
+import actions from './action';
+import moduleA from './modules/moduleA';
 
 Vue.use(Vuex);
 
@@ -14,8 +14,8 @@ const store = new Vuex.Store({
     mutations,
     actions,
     modules: {
-        moduleA
-    }
+        moduleA,
+    },
 });
 
 console.log(store, 'store');
@@ -28,11 +28,8 @@ console.log(store, 'store');
 // store.subscribe((mutation, state) => {
 //     console.log(mutation, state);
 // })
-store.subscribeAction((action,state)=>{
-    console.log(action,state);
-})
-
-
-
+store.subscribeAction((action, state) => {
+    console.log(action, state);
+});
 
 export default store;

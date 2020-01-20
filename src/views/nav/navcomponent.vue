@@ -2,16 +2,16 @@
     <div>
         <ul class="nav nav-tabs">
             <li>
-                <router-link :to="{name:'home'}">home</router-link>
+                <router-link :to="{ name: 'home' }">home</router-link>
             </li>
             <li>
-                <router-link :to="{name:'menu'}">menu</router-link>
+                <router-link :to="{ name: 'menu' }">menu</router-link>
             </li>
             <li>
                 <router-link to="/about">about</router-link>
             </li>
             <li>
-                <router-link to="/connect">connect</router-link>
+                <router-link to="/connect"> connect </router-link>
             </li>
             <li>
                 <router-link to="/rigester">rigester</router-link>
